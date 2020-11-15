@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .window {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="popupWindow('弹窗内容')">打开弹窗</button>
+    <button onclick="closeWindow()">关闭弹窗</button>
+
+    <script>
+        let createWindow = (function () {
+            let onlyWindow = null;
+            return function () {
+                if(!onlyWindow) {
+                    onlyWindow = new windowObj();
+                }
+                return onlyWindow;
+            }
+        })();
+        function windowObj() {
+            let div = document.createElement('div');
+            div.className = 'window';
+            div.style.display = 'none';
+            document.body.appendChild(div);
+            return div;
+        }
+
+        let ppWindow = new createWindow();
+        function popupWindow (msg) {
+            ppWindow.innerText = msg;
+            ppWindow.style.display = 'block';
+        }
+        function closeWindow () {
+            ppWindow.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

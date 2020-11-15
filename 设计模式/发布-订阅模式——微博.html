@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function fensi(name, weibo) {
+            this.name = name;
+            this.weibo = weibo;
+
+            const guanzhu = (mingxingName) => {
+                this.weibo.subscribe(mingxingName, this.name)
+            }
+
+            return {guanzhu}
+        }
+
+        function mingxing(mingxingName, weibo) {
+            this.mingxingName = mingxingName;
+            this.weibo = weibo;
+
+            const fabu = (callback) => {
+                this.weibo.publish(mingxingName, callback)
+            }
+            
+            return{fabu}
+        }
+
+        function weibo() {
+            let mf = {};
+
+            const publish = (pubType, callback) => {
+                Array.isArray(mf[pubType]) && 
+                mf[pubType].forEach(item => {
+                    callback(item);
+                })
+            }
+
+            const subscribe = (subType, subName) => {
+                !Array.isArray(mf[subType]) && (mf[subType] = [])
+                mf[subType].push(subName);
+            }
+
+            return {
+                publish,
+                subscribe
+            }
+        }
+
+        // 小明和小芳关注了吴亦凡，小华和小美关注了鹿晗，小芳和小美关注了易烊千玺，只有王敬伟没有人关注。
+        const weibo1 = new weibo();
+
+        const xiaoming = new fensi('小明', weibo1);
+        const xiaofang = new fensi('小芳', weibo1);
+        const xiaohua = new fensi('小华', weibo1);
+        const xiaomei = new fensi('小美', weibo1);
+        const xiaomeng = new fensi('小萌',weibo1);
+
+        const wuyifan = new mingxing('吴亦凡', weibo1);
+        const luhan = new mingxing('鹿晗', weibo1);
+        const yiyangqianxi = new mingxing('易烊千玺', weibo1);
+        const wangjingwei = new mingxing('王敬伟', weibo1);
+
+        xiaoming.guanzhu('吴亦凡');
+        xiaofang.guanzhu('吴亦凡');
+        xiaohua.guanzhu('鹿晗');
+        xiaomei.guanzhu('鹿晗');
+        xiaofang.guanzhu('易烊千玺');
+        xiaomei.guanzhu('易烊千玺');
+        xiaomeng.guanzhu('王敬伟');
+
+        wuyifan.fabu((fensi) =>console.log(fensi + '你好！很高兴你关注了我！我是吴亦凡'));
+        luhan.fabu((fensi) =>console.log(fensi + '你好！很高兴你关注了我！我是鹿晗'));
+        yiyangqianxi.fabu((fensi) =>console.log(fensi + '你好！很高兴你关注了我！我是易烊千玺'));
+        wangjingwei.fabu((fensi) =>console.log(fensi + '你好！很高兴你关注了我！我是王敬伟'));
+
+
+    </script>
+</body>
+</html>

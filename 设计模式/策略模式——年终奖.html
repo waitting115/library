@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .p1{
+            display: inline-block;
+        }
+        #div1 {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <p  class="p1">请选择评级：</p>
+        <select name="" id="select1" onchange="select1Change()">
+            <option value="S">S</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select>
+        <p  class="p1">，您的年终奖为：</p>
+        <div id="div1"></div>
+    </form>
+
+    <script>
+        const select1 = document.getElementById('select1');
+        const div1 = document.getElementById('div1');
+        const rate = {
+            S: 5000,
+            A: 4000,
+            B: 3000,
+            C: 2000,
+            D: 1000
+        }
+        const computed = {
+            basic : 5000,
+            S: function () {
+                return this.basic + rate['S']
+            },
+            A: function () {
+                return this.basic + rate['A']
+            },
+            B: function () {
+                return this.basic + rate['B']
+            },
+            C: function () {
+                return this.basic + rate['C']
+            },
+            D: function () {
+                return this.basic + rate['D']
+            },
+        }
+        window.onload = () => {
+            select1Change();
+        }
+        let getVal = () => {
+            let select1Index = select1.selectedIndex;
+            let selectVal = select1.options[select1Index].value;
+            return selectVal;
+        }
+        
+        const select1Change = () => {
+            const val = getVal();
+            div1.innerText = computed[val]();
+        }
+
+        
+    </script>
+</body>
+</html>

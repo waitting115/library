@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input1" onInput="handleInput(this)"/>
+    <br />
+    <div id="div1"></div>
+
+    <script>
+        function proxy_bind (target) {
+            return new Proxy(target, {
+                // get(obj, prop) {
+                //     if(!obj[prop]) obj[prop] = '';
+                //     return obj[prop]
+                // }, 
+                set(obj, prop, newValue) {
+                    obj[prop] = newValue;
+                    document.getElementById('div1').innerText = obj[prop];
+                    return;
+                }
+            });
+        }
+
+        let obj = {};
+
+        let obj_bind = proxy_bind(obj);
+
+        // ;(function () {
+        //     document.getElementById('input1').value = obj_bind.value;
+        //     document.getElementById('div1').innerText = obj_bind.value;
+        // })()
+
+        function handleInput(tartget) {
+            obj_bind.value = tartget.value;
+        }
+    </script>
+</body>
+</html>

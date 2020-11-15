@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.parent {
+			width: 500px;
+			height: 300px;
+			border: 2px solid #ccc;
+
+            display: table;
+		}
+		.son {
+			width: 200px;
+			height: 200px;
+			border: 2px solid #f40;
+
+            display: table-cell;
+            vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="parent">
+		<div class="son">
+            <div>适合单行 多行文本居中；高度等于行高只适用于单行文本</div>
+            啊啊啊啊 <br>
+            aaaaa
+        </div>
+	</div>
+</body>
+</html>
