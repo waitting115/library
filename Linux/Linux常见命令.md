@@ -3,6 +3,12 @@
 #### 进入桌面：
 
 >  cd Desktop
+#### 进入文件夹：
+
+>  cd wenjianjai
+#### 回退上一级：
+
+>  cd ../
 
 #### 查看该目录下的所有文件及文件夹：
 
@@ -126,6 +132,74 @@ lsof -i:端口号
 
 结束进程的话直接 kill -9 进程id就可以了
 
+#### 查看CPU情况：
+
+>  cat /proc/cpuinfo |grep "model name" && cat /proc/cpuinfo |grep "physical id"
+
+#### 查看内存大小：
+
+>  cat /proc/meminfo |grep MemTotal
+
+#### 查看硬盘状况：
+
+>  fdisk -l |grep Disk
+
+>  df -TH
+
+#### 拷贝文件夹（全部内容）：
+
+>   cp -f file1 file2 （复制文件，强制）
+>   cp -R dir1 dir2 （复制文件夹
+
+#### 删除文件和文件夹：
+
+>   rm -f demo.txt (强制删除文件)
+>   rm -rf demo (强制删除文件夹)
+
+#### 从服务器间拷贝数据（示例路径）：
+
+>  scp -r root@139.129.99.98:/alidata/software /alidata/software
+
+#### 解压缩tar.gz文件：
+
+>  解压缩tar.gz文件
+
+#### 显示filename最后100行：
+
+>  tail -n 100 filename
+
+#### rpm安装：
+
+>  rpm -ivh MySQL-shared-5.5.47-1.linux2.6.x86_64.rpm
+
+>  rpm -ivh MySQL-server-5.5.47-1.linux2.6.x86_64.rpm --force --nodeps   (强制安装)
+
+#### 6.8版本 服务启动的方法：
+
+>  service start mysql
+
+#### 7.4版本 服务启动的方法：
+
+>  systemctl start mysqld
+
+#### 给文件夹开放权限：
+
+>   chmod -R 777 文件夹
+    参数-R是递归的意思
+   
+ 777表示开放所有权限
+
+#### 显示filename最后100行：
+
+>  tail -n 100 filename
+
+#### 显示filename最后100行：
+
+>  tail -n 100 filename
+
+#### 显示filename最后100行：
+
+>  tail -n 100 filename
 # IOS命令
 
 #### 创建文件：
