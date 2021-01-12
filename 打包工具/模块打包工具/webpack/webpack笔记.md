@@ -4,19 +4,16 @@
 
 通过node的包管理器安装：
 
-1.安装webpack：
+1.安装webpack和webpack-cli：
 
-> npm i webpack --save-dev -g
+> npm i webpack webpack-cli -g
 
-2.安装webpack-cli:
 
-> npm i webpack-cli -g
-
-3.安装小服务器：
+2.安装小服务器：
 
 > npm i webpack-dev-server -g
 
-4.验证是否安装成功：
+34.验证是否安装成功：
 
 > webpack -v
 >
