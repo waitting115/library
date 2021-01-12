@@ -8,11 +8,15 @@
 
 > npm i webpack --save-dev -g
 
-2.安装小服务器：
+2.安装webpack-cli:
+
+> npm i webpack-cli -g
+
+3.安装小服务器：
 
 > npm i webpack-dev-server -g
 
-3.验证是否安装成功：
+4.验证是否安装成功：
 
 > webpack -v
 >
